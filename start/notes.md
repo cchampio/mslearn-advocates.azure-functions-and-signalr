@@ -14,7 +14,7 @@
 
     # Keep note of the name of this storage account. 
 
-    # Azure Cosmos DB is used to store stonk prices. 
+    # Azure Cosmos DB is used to store stock prices. 
     az cosmosdb create  \
     --name msl-sigr-cosmos-$(openssl rand -hex 5) \
     --resource-group <myrg>
@@ -48,6 +48,22 @@
     # Using the output update the local.settings.json file appropriately. 
     # In this way the app on the local machine to connect to the components that are remote in the cloud.
     
+    # install the package using npm install
+    # This will install using package.json and setup the database (see setup.js)
+    npm install
+
+    # Type F5 to run the function app. This is the server(less) piece or the "backend" piece.
+    # The front end web app will hit the backend function app to retrieve data. 
+    # To run the front end web app open another terminal and type
+    npm start
+
+    # The browser hits the web server/app running on port 8080 asking for the stocks. 
+    # The web app hits the function app (port 7071) to get the stocks data and builds the view to be returned to the browser.
+    # CORS relaxes the "same origin policy" to allow the web app to talk to the function app 
+
+    # to manipulate the stock prices run . . . 
+    npm run update-data 
+
 
 ```
 

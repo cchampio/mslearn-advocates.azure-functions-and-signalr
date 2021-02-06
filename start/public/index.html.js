@@ -1,3 +1,4 @@
+// URL of the function app
 const LOCAL_BASE_URL = 'http://localhost:7071';
 
 const app = new Vue({
@@ -20,6 +21,7 @@ const app = new Vue({
             }
         },
         startPoll() {
+            // Polling has disadvantages compared to using signalr and a "push" design.
             this.interval = setInterval(this.update, 5000);
         }
     },

@@ -1,3 +1,5 @@
+// get a cosmosdb client . . . 
+//https://www.npmjs.com/package/@azure/cosmos
 const client = require('./db.js');
 
 const databaseDefinition = { id: "stocksdb" };
