@@ -67,6 +67,19 @@
 
 ```
 
+# Analysis of polling solution
 
+## Pros
+
+- Simple solution.
+
+## Cons
+
+- Client app contacts server whether stock prices have changed or not.
+- All stocks are updated on the web page regardless of what actually changed. 
+- Time based polling will see delays in changes appearing. If the interval is too short 
+  then there may be many unnecessary req/resp exchanges -> wasted resources and server
+  taxed more than necessary especially under heavy load. 
+- 
 
 
