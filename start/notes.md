@@ -80,6 +80,5 @@
 - Time based polling will see delays in changes appearing. If the interval is too short 
   then there may be many unnecessary req/resp exchanges -> wasted resources and server
   taxed more than necessary especially under heavy load. 
-- 
-test
+
 
