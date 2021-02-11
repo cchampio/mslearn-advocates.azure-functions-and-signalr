@@ -1,3 +1,4 @@
+// URL of the function app
 const LOCAL_BASE_URL = 'http://localhost:7071';
 const AZURE_BASE_URL = '<FUNCTION_APP_ENDPOINT>';
 
@@ -30,7 +31,10 @@ const app = new Vue({
     }
 });
 
+// When the page loads the connect function is called.
 const connect = () => {
+    // Use the SignalR sdk to create a connection
+    // This results in a connection to the SignalR server. 
     const connection = new signalR.HubConnectionBuilder().withUrl(`${getAPIBaseUrl()}/api`).build();
 
     connection.onclose(()  => {
@@ -38,6 +42,7 @@ const connect = () => {
         setTimeout(() => connect(), 2000);
     });
 
+    // Listen for SignalR messages and update the stock as they occur.
     connection.on('updated', updatedStock => {
         const index = app.stocks.findIndex(s => s.id === updatedStock.id);
         app.stocks.splice(index, 1, updatedStock);
